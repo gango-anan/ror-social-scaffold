@@ -35,4 +35,19 @@ RSpec.describe Bond, type: :model do
       expect(bond).not_to be_valid
     end
   end
+
+  describe '#save' do
+    context 'when complete data is given' do
+      it 'can be persisted' do
+        user = create(:user)
+        friend = create(:user)
+
+        bond = Bond.new(user: user, friend: friend, state: Bond::REQUESTING)
+        bond.save
+        expect(bond).to be_persisted
+        expect(bond.user).to eq user
+        expect(bond.friend).to eq friend
+      end
+    end
+  end
 end

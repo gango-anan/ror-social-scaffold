@@ -1,0 +1,2 @@
+class Bond < ApplicationRecord
+end

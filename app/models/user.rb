@@ -33,6 +33,11 @@ class User < ApplicationRecord
     bond.save
   end
 
+  def reject_request(user)
+    bond = unconfirmed_friends.find{ |bond| bond.user == user }
+    bond.delete
+  end
+
   def check_friend(user)
     friends.include?(user)
   end

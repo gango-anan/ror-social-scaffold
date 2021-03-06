@@ -16,9 +16,24 @@ class User < ApplicationRecord
   has_many :inward_friends, -> { Bond.confirmed_friendship }, through: :inward_bonds, source: :user
 
   def friends
-    direct_friends = bonds.select{ |bond| bond.friend if bond.state }
-    inward_friends = bonds.select{ |bond| bond.user if bond.state }
+    @bonds = Bond.all
+    @direct_friends = @bonds.select{ |bond| bond.friend if bond.state }
+    @inward_friends = @bonds.select{ |bond| bond.user if bond.state }
 
-    direct_friends + inward_friends
+    @direct_friends + @inward_friends
+  end
+
+  def unconfirmed_friends
+    @bonds.select{ |bond| bond.friend unless bond.state }
+  end
+
+  def confirm_request(user)
+    bond = @inward_friends.find{ |bond| bond.user == user }
+    bond.state = true
+    bond.save
+  end
+
+  def check_friend(user)
+    friends.include?(user)
   end
 end

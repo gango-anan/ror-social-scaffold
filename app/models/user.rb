@@ -22,4 +22,8 @@ class User < ApplicationRecord
 
     @direct_friends + @inward_friends
   end
+
+  def check_friend(user)
+    friends.include?(user)
+  end
 end

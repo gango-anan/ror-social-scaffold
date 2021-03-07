@@ -22,23 +22,4 @@ class User < ApplicationRecord
 
     @direct_friends + @inward_friends
   end
-
-  def unconfirmed_friends
-    @bonds.select{ |bond| bond.friend unless bond.state }
-  end
-
-  def confirm_request(user)
-    bond = @inward_friends.find{ |bond| bond.user == user }
-    bond.state = true
-    bond.save
-  end
-
-  def reject_request(user)
-    bond = unconfirmed_friends.find{ |bond| bond.user == user }
-    bond.delete
-  end
-
-  def check_friend(user)
-    friends.include?(user)
-  end
 end

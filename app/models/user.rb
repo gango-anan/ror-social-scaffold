@@ -17,13 +17,19 @@ class User < ApplicationRecord
 
   def friends
     @bonds = Bond.all
-    @direct_friends = @bonds.select{ |bond| bond.friend if bond.state }
-    @inward_friends = @bonds.select{ |bond| bond.user if bond.state }
-
-    @direct_friends + @inward_friends
+    @direct_friends = @bonds.map{ |bond| bond.friend if bond.state }
+    @inward_friends = @bonds.map{ |bond| bond.user if bond.state }
+    (@direct_friends + @inward_friends).compact
   end
 
-  def check_friend(user)
-    friends.include?(user)
+  def user_friends(user)
+    bonds = Bond.all
+    direct_friends = user.bonds.map{ |bond| bond.friend if bond.state }
+    indirect_friends = bonds.where(friend_id: user.id).map{ |bond| bond.user if bond.state }
+    (direct_friends + indirect_friends).compact
+  end
+
+  def check_friend(user1,user2)
+    user_friends(user1).include?(user2)
   end
 end

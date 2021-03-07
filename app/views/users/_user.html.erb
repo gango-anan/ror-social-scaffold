@@ -4,5 +4,5 @@
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
   &nbsp;
-  <%= render 'users/invite' %>
+  <%= manage_invite_requests(user) %>
 </li>

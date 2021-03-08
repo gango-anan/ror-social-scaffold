@@ -21,7 +21,7 @@ class User < ApplicationRecord
   end
 
   def reject_friendship_request(user)
-    direct_friends.delete(user)
+    indirect_friends.delete(user)
   end
 
 end

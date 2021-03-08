@@ -38,4 +38,8 @@ class User < ApplicationRecord
     bond.save
   end
 
+  def check_if_my_friend(user)
+    my_friends.include?(user)
+  end
+
 end

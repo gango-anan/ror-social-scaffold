@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :direct_friendships, class_name: 'Bond', foreign_key: 'user_id', dependent: :destroy
   has_many :direct_friends, through: :direct_friendships, source: :friend
   has_many :indirect_friendships, class_name: 'Bond', foreign_key: 'friend_id', dependent: :destroy
-  has_many :indirect_friends, through: :direct_friendships, source: :user
+  has_many :indirect_friends, through: :indirect_friendships, source: :user
 
   def invite_to_friendship(user)
     direct_friends << user

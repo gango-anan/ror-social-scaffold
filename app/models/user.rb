@@ -18,4 +18,8 @@ class User < ApplicationRecord
     direct_friends << user
   end
 
+  def reject_friendship_request(user)
+    direct_friends.delete(user)
+  end
+
 end

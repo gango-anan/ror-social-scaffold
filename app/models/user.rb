@@ -28,4 +28,8 @@ class User < ApplicationRecord
     direct_friends + indirect_friends
   end
 
+  def pending_friends
+    indirect_friendships.map{ |friendship| friendship.user unless friendship.state }
+  end
+
 end

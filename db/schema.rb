@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 2021_03_04_110747) do
     t.boolean "state", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_bonds_on_friend_id"
     t.index ["user_id", "friend_id"], name: "index_bonds_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_bonds_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|

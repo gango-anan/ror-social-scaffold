@@ -32,4 +32,10 @@ class User < ApplicationRecord
     indirect_friendships.map{ |friendship| friendship.user unless friendship.state }
   end
 
+  def confirm_friendship(user)
+    bond = indirect_friendships.find{ |friendship| friendship.user == user }
+    bond.state = true
+    bond.save
+  end
+
 end

@@ -1,8 +1,8 @@
 module UserHelper
     def manage_invite_requests(user)
-        if current_user.check_friend(current_user, user)
-            return 'Friend'
-        end
-        render 'users/invite'
+        return if current_user == user
+        return render 'users/invite' unless current_user.check_if_my_friend(user)
+
+        'Friend'
     end
   end

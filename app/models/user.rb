@@ -24,4 +24,8 @@ class User < ApplicationRecord
     indirect_friends.delete(user)
   end
 
+  def my_friends
+    direct_friends + indirect_friends
+  end
+
 end

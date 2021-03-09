@@ -1,7 +1,3 @@
 <h1><%= "#{ current_user.name.upcase }'S FRIENDS" %> </h1>
-<h3>Friend Requests</h3>
-<% @friends.each do |friend| %>
-    <span><%= friend.name %> &nbsp; <%= manage_requests_to_me(friend) %> <%= manage_requests_to_others(friend)%></span>
-    <br/>
-<% end %>
-<h3>Pending Confirmations</h3>
+<p><a href="#">Incoming Friend Requests</a> | <a href="#">Outgoing Friend Requests</a></p>
+<h3>My Confirmed Friends.</h3>

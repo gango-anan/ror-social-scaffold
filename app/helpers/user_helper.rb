@@ -9,7 +9,7 @@ module UserHelper
     def manage_requests_to_me(user)
          return unless current_user.pending_friends.include?(user)
 
-        'Accept | Reject'
+        render 'users/accept'
     end
 
     def manage_requests_to_others(user)

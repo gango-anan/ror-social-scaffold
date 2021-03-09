@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def friends
-    @friends = current_user.my_friends
+    @friends = current_user.confirmed_friends
   end
 
   def incoming_requests

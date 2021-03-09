@@ -42,4 +42,8 @@ class User < ApplicationRecord
     my_friends.include?(user)
   end
 
+  def unconfirmed_sent_requests
+    direct_friendships.map{ |friendship| friendship.friend unless friendship.state }
+  end
+
 end

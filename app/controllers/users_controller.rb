@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   end
 
   def outgoing_requests
-    @outgoing = unconfirmed_sent_requests
+    @outgoing = current_user.unconfirmed_sent_requests
   end
 end

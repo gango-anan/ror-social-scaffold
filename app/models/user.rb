@@ -16,6 +16,10 @@ class User < ApplicationRecord
   has_many :indirect_friendships, class_name: 'Bond', foreign_key: 'friend_id', dependent: :destroy
   has_many :indirect_friends, through: :indirect_friendships, source: :user
 
+  def my_friendships
+    direct_friendships + indirect_friendships
+  end
+  
   def invite_to_friendship(user)
     direct_friends << user
   end
@@ -44,6 +48,13 @@ class User < ApplicationRecord
 
   def unconfirmed_sent_requests
     direct_friendships.map{ |friendship| friendship.friend unless friendship.state }
+  end
+
+  def confirmed_friends
+    direct_confirmed = direct_friendships.map{ |friendship| friendship.friend if friendship.state }
+    indirect_confirmed = indirect_friendships.map{ |friendship| friendship.user if friendship.state }
+    
+    direct_confirmed + indirect_confirmed
   end
 
 end

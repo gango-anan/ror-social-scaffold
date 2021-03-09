@@ -13,4 +13,12 @@ class UsersController < ApplicationController
   def friends
     @friends = current_user.my_friends
   end
+
+  def incoming_requests
+    @incoming = current_user.pending_friends
+  end
+
+  def outgoing_requests
+    @outgoing = unconfirmed_sent_requests
+  end
 end

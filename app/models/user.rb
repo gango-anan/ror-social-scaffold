@@ -33,7 +33,8 @@ class User < ApplicationRecord
   end
 
   def pending_friends
-    indirect_friendships.map{ |friendship| friendship.user unless friendship.state }
+    pending_friends = indirect_friendships.map{ |friendship| friendship.user unless friendship.state }
+    pending_friends.compact
   end
 
   def confirm_friendship(user)
@@ -47,7 +48,8 @@ class User < ApplicationRecord
   end
 
   def unconfirmed_sent_requests
-    direct_friendships.map{ |friendship| friendship.friend unless friendship.state }
+    unconfirmed_sent_requests = direct_friendships.map{ |friendship| friendship.friend unless friendship.state }
+    unconfirmed_sent_requests.compact
   end
 
   def confirmed_friends

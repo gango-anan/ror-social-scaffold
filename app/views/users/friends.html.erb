@@ -1,3 +1,6 @@
 <h1><%= "#{ current_user.name.upcase }'S FRIENDS" %> </h1>
-<p><a href="#">Incoming Friend Requests</a> | <a href="#">Outgoing Friend Requests</a></p>
+<p><%= link_to 'Incoming Friend Requests', users_incoming_requests_path %> | <%= link_to 'Outgoing Friend Requests', users_outgoing_requests_path %></p>
 <h3>My Confirmed Friends.</h3>
+<% @friends.pluck(:name).each do |friend| %>
+    <%= friend %>
+<% end %>

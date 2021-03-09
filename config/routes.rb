@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'users/friends'
+  get 'users/incoming_requests'
+  get 'users/outgoing_requests'
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]

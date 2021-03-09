@@ -5,4 +5,16 @@ module UserHelper
 
         'Friend'
     end
+
+    def manage_requests_to_me(user)
+         return unless current_user.pending_friends.include?(user)
+
+        'Accept | Reject'
+    end
+
+    def manage_requests_to_others(user)
+        return unless current_user.unconfirmed_sent_requests.include?(user)
+
+        'pending confirmation'
+    end
   end

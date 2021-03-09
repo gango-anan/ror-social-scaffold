@@ -53,8 +53,8 @@ class User < ApplicationRecord
   def confirmed_friends
     direct_confirmed = direct_friendships.map{ |friendship| friendship.friend if friendship.state }
     indirect_confirmed = indirect_friendships.map{ |friendship| friendship.user if friendship.state }
-    
-    direct_confirmed + indirect_confirmed
+
+    (direct_confirmed + indirect_confirmed).compact
   end
 
 end

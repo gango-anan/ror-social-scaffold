@@ -1,0 +1,4 @@
+<% @friends.each do |friend| %>
+    <span><%= friend.name %> &nbsp; <%= manage_requests_to_me(friend) %> <%= manage_requests_to_others(friend)%></span>
+    <br/>
+<% end %>

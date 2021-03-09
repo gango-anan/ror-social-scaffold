@@ -1,13 +1,12 @@
 class BondsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
   end
 
   def create
-  end
-
-  def update
-  end
-
-  def destroy
+    user = User.find(params[:friend_id])
+    current_user.invite_to_friendship(user)
+    redirect_to users_path
   end
 end

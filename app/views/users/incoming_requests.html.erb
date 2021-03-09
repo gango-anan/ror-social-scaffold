@@ -1,4 +1,4 @@
 <h1>Incoming Friend Requests</h1>
-<% @incoming.pluck(:name).each |friend| %>
+<% @incoming.pluck(:name).each do |friend| %>
     <%= friend %>
 <% end %>

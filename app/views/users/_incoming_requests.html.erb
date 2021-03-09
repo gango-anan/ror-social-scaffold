@@ -1,4 +1,4 @@
-<% @friends.each do |friend| %>
-    <span><%= friend.name %> &nbsp; <%= manage_requests_to_me(friend) %> <%= manage_requests_to_others(friend)%></span>
-    <br/>
+<h1>Incoming Friend Requests</h1>
+<% @incoming.pluck(:name).each |friend| %>
+    <%= friend %>
 <% end %>

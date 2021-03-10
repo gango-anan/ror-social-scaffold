@@ -10,6 +10,7 @@ class BondsController < ApplicationController
   end
 
   def new
+    @bond = Bond.new
   end
 
   def create

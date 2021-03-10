@@ -1,4 +1,16 @@
+<% @user ||= current_user %>
 <h2><%= "#{ current_user.name.upcase }'S FRIENDSHIPS" %> </h2>
-<%= render 'bonds/friends' %>
+<h3>My Confirmed Friends.</h3>
+   <br/>
+<% @confirmed_friends.pluck(:name).each do |friend| %>
+    <%= friend %>
+    <br/>
+<% end %>
 <br/>
-<%= render 'bonds/pending_invites_to_me' %>
+<h3>Pending invitations to me</h3>
+   <br/>
+<% @pending_friends.each do |friend| %>
+    <% @user = friend %>
+    <span><%= friend.name %> &nbsp; <%= render 'bonds/accept' %></span>
+    
+<% end %>

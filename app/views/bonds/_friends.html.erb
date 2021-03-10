@@ -1,7 +1,0 @@
-<% @user ||= current_user %>
-<h3>My Confirmed Friends.</h3>
-   <br/>
-<% @confirmed_friends.pluck(:name).each do |friend| %>
-    <%= friend %>
-    <br/>
-<% end %>

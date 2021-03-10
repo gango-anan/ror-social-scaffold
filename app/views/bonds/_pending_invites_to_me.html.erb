@@ -1,0 +1,7 @@
+<% @user ||= current_user %>
+<h3>Pending invitations to me</h3>
+   <br/>
+<% @pending_friends.pluck(:name).each do |friend| %>
+    <%= friend %>
+    <br/>
+<% end %>

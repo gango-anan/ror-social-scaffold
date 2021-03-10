@@ -20,7 +20,7 @@
       </div>
       <% if current_user %>
         <div class="menu-item">
-          <%= menu_link_to "Friends", users_friends_path %>
+          <%= menu_link_to "Friends", bonds_path %>
         </div>
         <div class="menu-item">
           <%= menu_link_to "#{ current_user.name }", user_path(current_user) %>

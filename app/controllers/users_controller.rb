@@ -10,9 +10,9 @@ class UsersController < ApplicationController
     @posts = @user.posts.ordered_by_most_recent
   end
 
-  def friends
-    @friends = current_user.confirmed_friends
-  end
+  # def friends
+  #   @friends = current_user.confirmed_friends
+  # end
 
   def incoming_requests
     @incoming = current_user.pending_friends

@@ -11,6 +11,7 @@
    <br/>
 <% @pending_friends.each do |friend| %>
     <% @user = friend %>
-    <span><%= friend.name %> &nbsp; <%= render 'bonds/accept' %></span>
-    
+    <%= friend.name %> &nbsp; 
+    <%= render 'bonds/accept' %>
+    <%= render 'bonds/reject' %>
 <% end %>

@@ -19,19 +19,18 @@ class BondsController < ApplicationController
   def create
     user = User.find(params[:friend_id])
     current_user.invite_to_friendship(user)
-    redirect_to users_path
+    redirect_to bonds_path
   end
 
   def update
-    #user = User.find(params[:user_id])
     user = Bond.find(params[:id]).user
     current_user.confirm_friendship(user)
-    redirect_to users_path
+    redirect_to bonds_path
   end
 
   def destroy
-    user = Bond.find(params[:id]).friend
-    current_user.reject_friendship_request(user)
-    redirect_to current_user
+    bond = Bond.find(params[:id])
+    bond.destroy
+    redirect_to bonds_path
   end
 end

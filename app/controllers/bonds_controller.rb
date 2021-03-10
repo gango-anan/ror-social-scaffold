@@ -13,8 +13,7 @@ class BondsController < ApplicationController
     @bond = Bond.new
   end
 
-  def show
-  end
+  def show; end
 
   def create
     user = User.find(params[:friend_id])

@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def logged_in_user
     return render 'layouts/visitor' unless current_user
-    
+
     render 'layouts/loggedin_user'
   end
 

@@ -1,6 +1,7 @@
+<% @user ||= current_user %>
 <section>
     <h1>My Invitations</h1>
-    <h3>Pending invitations to me</h3>
+    <h3>Received Invitations</h3>
     <br/>
     <% @pending_friends.each do |friend| %>
         <% @user = friend %>
@@ -8,7 +9,8 @@
         <%= render 'bonds/accept' %>
         <%= render 'bonds/reject' %>
     <% end %>
-    <h3>Pending invitations sent by me</h3>
+    <br/>
+    <h3>Sent Invitations</h3>
     <br/>
     <% @unconfirmed_sent_requests.each do |friend| %>
         <%= friend.name %>

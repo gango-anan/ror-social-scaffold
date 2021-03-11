@@ -6,6 +6,10 @@ class BondsController < ApplicationController
     @bonds = @user.my_friendships
     @friends = @user.my_friends
     @confirmed_friends = @user.confirmed_friends
+  end
+
+  def invitations
+    @user = current_user
     @pending_friends = @user.pending_friends
     @unconfirmed_sent_requests = @user.unconfirmed_sent_requests
   end

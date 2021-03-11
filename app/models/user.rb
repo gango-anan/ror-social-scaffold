@@ -58,4 +58,8 @@ class User < ApplicationRecord
 
     (direct_confirmed + indirect_confirmed).compact
   end
+
+  def unconfirmed_requests
+    unconfirmed_sent_requests + pending_friends
+  end
 end

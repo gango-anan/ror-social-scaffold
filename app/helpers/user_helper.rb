@@ -2,15 +2,11 @@ module UserHelper
   def manage_invite_requests(user)
     return if current_user == user
     return render 'users/invite' unless current_user.check_if_my_friend(user)
-
-    'Friend'
   end
 
   def manage_create_friendship(user)
     return if current_user == user
     return render 'users/create_bond' unless current_user.check_if_my_friend(user)
-
-    'Friend'
   end
 
   def manage_requests_to_me(user)

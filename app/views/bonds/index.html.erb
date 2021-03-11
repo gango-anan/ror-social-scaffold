@@ -15,3 +15,9 @@
     <%= render 'bonds/accept' %>
     <%= render 'bonds/reject' %>
 <% end %>
+<h3>Pending invitations sent by me</h3>
+   <br/>
+<% @unconfirmed_sent_requests.each do |friend| %>
+    <%= friend.name %>
+    <br/>
+<% end %>

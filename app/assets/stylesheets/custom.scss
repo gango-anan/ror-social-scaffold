@@ -57,7 +57,7 @@ a {
   }
 
   .menu {
-    width: 60%;
+    width: 50%;
     justify-content: space-between;
 
     .menu-item {
@@ -165,7 +165,7 @@ form {
 
   input[type="submit"] {
     padding: 8px;
-    width: 70%;
+    width: 100%;
     border: none;
     border-radius: 4px;
     background-color: $primary-color-dark;

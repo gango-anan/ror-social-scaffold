@@ -23,7 +23,7 @@ class BondsController < ApplicationController
   def create
     user = User.find(params[:friend_id])
     current_user.invite_to_friendship(user)
-    redirect_to bonds_path
+    redirect_to bonds_invitations_path
   end
 
   def update
@@ -35,6 +35,6 @@ class BondsController < ApplicationController
   def destroy
     bond = Bond.find(params[:id])
     bond.destroy
-    redirect_to bonds_path
+    redirect_to bonds_invitations_path
   end
 end

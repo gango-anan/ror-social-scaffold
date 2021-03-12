@@ -1,6 +1,7 @@
 module UserHelper
   def manage_create_friendship(user)
     return if current_user == user
+
     render partial: 'users/create_bond' unless current_user.check_if_my_friend(user)
   end
 

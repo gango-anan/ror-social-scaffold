@@ -28,6 +28,8 @@ module ApplicationHelper
   end
 
   def invite_btn(user)
-    button_to('Invite to Friendship', invite_path(friend_id: user.id), method: :post) unless current_user.check_if_my_friend(user) || current_user == user
+    return if current_user.check_if_my_friend(user) || current_user == user
+
+    button_to('Invite to Friendship', invite_path(friend_id: user.id), method: :post)
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe '#valid' do
-    it "is valid if a name is present" do
+    it 'is valid if a name is present' do
       user = create(:user)
       expect(user).to be_valid
 
@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it "is valid if the name is not more than 20 characters" do
+    it 'is valid if the name is not more than 20 characters' do
       user = create(:user)
       expect(user).to be_valid
 

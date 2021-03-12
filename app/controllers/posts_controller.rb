@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   def timeline_posts
     timeline_post ||= Post.all.ordered_by_most_recent.includes(:user)
     all_users = current_user.confirmed_friends
-    timeline_post.map{ |post| post if all_users.include?(post.user) || post.user == current_user }.compact
+    timeline_post.map { |post| post if all_users.include?(post.user) || post.user == current_user }.compact
   end
 
   def post_params

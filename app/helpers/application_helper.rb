@@ -26,4 +26,8 @@ module ApplicationHelper
     render 'layouts/notices' if notice.present?
     render 'layouts/alerts' if alert.present?
   end
+
+  def invite_btn(user)
+    button_to('Invite to Friendship', invite_path(friend_id: user.id), method: :post) unless current_user.check_if_my_friend(user) || current_user == user
+  end
 end

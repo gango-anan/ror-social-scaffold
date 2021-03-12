@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
   resources :bonds, except: [:edit, :show]
   get 'bonds/invitations'
+  post 'invite' => 'bonds#create', as: 'invite'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,6 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe '#valid' do
+    it "is valid if a name is present" do
+      user = create(:user)
+      expect(user).to be_valid
+
+      user.name = nil
+      expect(user).not_to be_valid
+    end
+
+    it "is valid if the name is not more than 20 characters" do
+      user = create(:user)
+      expect(user).to be_valid
+
+      user.name = SecureRandom.hex(15)
+      expect(user).not_to be_valid
+    end
+  end
+
   describe '#friends' do
     it "can list all of the user's friends" do
       user = create(:user)

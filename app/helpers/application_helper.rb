@@ -15,4 +15,21 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def logged_in_user
+    return render 'layouts/visitor' unless current_user
+
+    render 'layouts/loggedin_user'
+  end
+
+  def notices_alerts
+    render 'layouts/notices' if notice.present?
+    render 'layouts/alerts' if alert.present?
+  end
+
+  def invite_btn(user)
+    return if current_user.check_if_my_friend(user) || current_user == user
+
+    button_to('Invite to Friendship', invite_path(friend_id: user.id), method: :post)
+  end
 end

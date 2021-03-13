@@ -9,4 +9,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
   end
+
+  def incoming_requests
+    @incoming = current_user.pending_friends
+  end
+
+  def outgoing_requests
+    @outgoing = current_user.unconfirmed_sent_requests
+  end
 end

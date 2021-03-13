@@ -2,17 +2,14 @@ class BondsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @user = current_user
-    @bonds = @user.my_friendships
-    @friends = @user.my_friends
-    @confirmed_friends = @user.confirmed_friends
+    @bonds = current_user.my_friendships
+    @friends = current_user.my_friends
+    @confirmed_friends = current_user.confirmed_friends
   end
 
   def invitations
-    @user = current_user
-    @pending_friends = @user.pending_friends
-    @unconfirmed_sent_requests = @user.unconfirmed_sent_requests
-    p 'Gango'
+    @pending_friends = current_user.pending_friends
+    @unconfirmed_sent_requests = current_user.unconfirmed_sent_requests
   end
 
   def new

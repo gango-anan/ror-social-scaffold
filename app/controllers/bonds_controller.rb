@@ -12,6 +12,7 @@ class BondsController < ApplicationController
     @user = current_user
     @pending_friends = @user.pending_friends
     @unconfirmed_sent_requests = @user.unconfirmed_sent_requests
+    p 'Gango'
   end
 
   def new

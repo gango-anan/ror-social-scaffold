@@ -20,8 +20,9 @@ class BondsController < ApplicationController
 
   def create
     user = User.find(params[:friend_id])
-    current_user.invite_to_friendship(user)
-    redirect_to bonds_invitations_path
+    if current_user.invite_to_friendship(user)
+      redirect_to bonds_invitations_path, notice: 'Friendship Invitation Sent Succesfully.'
+    end
   end
 
   def update

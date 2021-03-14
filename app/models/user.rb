@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   def invite_to_friendship(user)
     direct_friends << user
+    return true
   end
 
   def reject_friendship_request(user)

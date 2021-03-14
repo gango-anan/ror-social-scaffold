@@ -27,6 +27,8 @@ class BondsController < ApplicationController
   def update
     user = Bond.find(params[:id]).user
     current_user.confirm_friendship(user)
+    Bond.create(user_id: current_user.id, friend_id: user.id, state: true)
+    redirect_to bonds_path
   end
 
   def destroy

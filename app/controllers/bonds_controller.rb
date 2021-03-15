@@ -8,7 +8,7 @@ class BondsController < ApplicationController
   end
 
   def invitations
-    @pending_friendship = Bond.all.where(friend: current_user, state: false)
+    @pending_friendship = Bond.all.where(friend: current_user, confirmed: false)
     @pending_friends = @pending_friendship.map(&:user)
     @unconfirmed_sent_requests = current_user.unconfirmed_sent_requests
   end

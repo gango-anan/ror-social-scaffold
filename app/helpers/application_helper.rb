@@ -30,8 +30,8 @@ module ApplicationHelper
   def invite_btn(user)
     bonds = Bond.where(friend: current_user, user: user, confirmed: false)
     friend = bonds.map{ |bond| bond.user }
-    return if friend.include?(user) || current_user == user
-
+    return if current_user == user || friend.include?(user) || current_user.check_if_my_friend(user)
+    
     button_to('Invite to Friendship', invite_path(friend_id: user.id), method: :post)
   end
 end

@@ -17,7 +17,7 @@ class User < ApplicationRecord
            -> { where confirmed: true },
            class_name: 'Bond',
            foreign_key: 'friend_id', dependent: :destroy
-  has_many :indirect_friends, through: :confirmed_friendships, source: :user
+  has_many :friends, through: :confirmed_friendships, source: :user
 
   def my_friendships
     direct_friendships + confirmed_friendships
@@ -28,11 +28,11 @@ class User < ApplicationRecord
   end
 
   def reject_friendship_request(user)
-    indirect_friends.delete(user)
+    friends.delete(user)
   end
 
   def my_friends
-    direct_friends + indirect_friends
+    direct_friends + friends
   end
 
   def check_if_my_friend(user)

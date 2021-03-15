@@ -20,7 +20,7 @@ To get a local copy up and running follow these simple example steps.
 
 - Ruby: 2.7.0
 - Rails: 5.2.4
-- Postgres: >=9.5
+- Postgres: >= 9.5
 
 ### Setup
 

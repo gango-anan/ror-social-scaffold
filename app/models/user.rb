@@ -32,12 +32,6 @@ class User < ApplicationRecord
     direct_friends + indirect_friends
   end
 
-  def confirm_friendship(user)
-    bond = indirect_friendships.find { |friendship| friendship.user == user }
-    bond.state = true
-    bond.save
-  end
-
   def check_if_my_friend(user)
     my_friends.include?(user)
   end
@@ -48,10 +42,7 @@ class User < ApplicationRecord
   end
 
   def confirmed_friends
-    direct_confirmed = direct_friendships.map { |friendship| friendship.friend if friendship.state }
-    indirect_confirmed = indirect_friendships.map { |friendship| friendship.user if friendship.state }
-
-    (direct_confirmed + indirect_confirmed).compact
+    direct_friendships.map { |friendship| friendship.friend if friendship.state }.compact
   end
 
   def unconfirmed_requests

@@ -1,5 +1,5 @@
 <%= form_with(model: 
-current_user.indirect_friendships.find_by(friend_id: @user.id), 
+current_user.confirmed_friendships.find_by(friend_id: @user.id), 
 html: { method: :delete }, local: true) do |f| %>
     <div><%= hidden_field_tag :user_id, @user.id %></div>
     <%= f.submit 'Reject Request'%>

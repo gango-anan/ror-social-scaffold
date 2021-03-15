@@ -8,7 +8,8 @@ class BondsController < ApplicationController
   end
 
   def invitations
-    @pending_friends = Bond.all.where(friend: current_user).map{ |bond| bond.user }
+    @pending_friendship = Bond.all.where(friend: current_user, state: false)
+    @pending_friends = @pending_friendship.map{ |bond| bond.user }
     @unconfirmed_sent_requests = current_user.unconfirmed_sent_requests
   end
 
@@ -25,9 +26,10 @@ class BondsController < ApplicationController
   end
 
   def update
-    user = Bond.find(params[:id]).user
-    current_user.confirm_friendship(user)
-    Bond.create(user_id: current_user.id, friend_id: user.id, state: true)
+    bond = Bond.find(params[:id])
+    user = bond.user
+    new_user = current_user
+    bond.confirm_friendship(user, new_user)
     redirect_to bonds_path
   end
 

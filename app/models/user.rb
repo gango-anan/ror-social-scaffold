@@ -22,4 +22,8 @@ class User < ApplicationRecord
            class_name: 'Bond',
            foreign_key: 'friend_id', dependent: :destroy
   has_many :confirmed_friends, through: :confirmed_friendships, source: :user
+  
+  def friends_and_own_posts
+    Post.where(user: (self.confirmed_friends.to_a << self))
+  end
 end

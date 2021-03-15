@@ -56,7 +56,7 @@ Open `http://localhost:3000/` in your browser.
 
 ## Author
 
-Galiwango Ananiya
+GALIWANGO ANANIYA
 
 - GitHub: [@gango-anan](https://github.com/gango-anan) 
 - Twitter: [@gango_anan](https://twitter.com/gango_anan) 

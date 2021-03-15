@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def timeline_posts
     timeline_post ||= Post.all.ordered_by_most_recent.includes(:user)
-    timeline_post.where(user: (current_user.confirmed_friends.to_a << current_user))
+    timeline_post = current_user.friends_and_own_posts
   end
 
   def post_params

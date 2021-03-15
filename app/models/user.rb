@@ -46,6 +46,6 @@ class User < ApplicationRecord
   end
 
   def unconfirmed_requests
-    unconfirmed_sent_requests + pending_friends
+    unconfirmed_sent_requests
   end
 end

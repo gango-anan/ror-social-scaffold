@@ -1,19 +1,10 @@
-<% @user ||= current_user %>
 <section>
     <h1>My Invitations</h1>
-    <h3>Pending Received Invitations.</h3>
+    <h3>Pending Received Invitations</h3>
     <br/>
-    <% @pending_friends.each do |friend| %>
-        <% @user = friend %>
-        <%= friend.name %> &nbsp; 
-        <%= render 'bonds/accept' %>
-        <%= render 'bonds/reject' %>
-    <% end %>
+
     <br/>
-    <h3>Pending Sent Invitations.</h3>
+    <h3>Pending Sent Invitations</h3>
     <br/>
-    <% @unconfirmed_sent_requests.each do |friend| %>
-        <%= friend.name %>
-        <br/>
-    <% end %>
+
 </section>

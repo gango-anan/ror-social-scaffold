@@ -1,5 +1,0 @@
-<h1>Incoming Friend Requests</h1>
-<% @incoming.pluck(:name).each do |friend| %>
-    <%= friend %>
-    <%= render 'users/accept' %>
-<% end %>

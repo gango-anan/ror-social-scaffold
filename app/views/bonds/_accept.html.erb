@@ -1,4 +1,0 @@
-<%= form_with(model: Bond.find_by(friend: current_user, user: @user, confirmed: false), html: { method: :put }, local: true) do |f| %>
-    <%= f.submit 'Accept'%>
-<% end %>
-

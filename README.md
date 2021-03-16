@@ -1,15 +1,16 @@
-# Scaffold for social media app with Ruby on Rails
+# STAY IN TOUCH
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+Stay In Touch is a revamped social media application created using Ruby on rails on top of a project that was already existing. This application allows friends to keep in touch by creating accounts, inviting other registered users to a friendship and communicate to each other through posts. Below is a screenshot of the home page of a signed in user.
+
+## Home page of a logged in user.
+![screenshot](./app/assets/images/screen_shot.png)
 
 ## Built With
-
+- HTML, CSS
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
 ## Live Demo
-
-
 
 
 ## Getting Started

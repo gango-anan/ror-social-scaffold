@@ -4,9 +4,9 @@ RSpec.describe BondsController, type: :controller do
   login_user
 
   describe '#index' do
-    let(:user){ create(:user) }
+    let(:user) { create(:user) }
     before do
-      get :index, params: {:user_id => user.id}
+      get :index, params: { user_id: user.id }
     end
 
     it 'returns a success response' do
@@ -19,9 +19,9 @@ RSpec.describe BondsController, type: :controller do
   end
 
   describe '#invitations' do
-    let(:user){ create(:user) }
+    let(:user) { create(:user) }
     before do
-      get :friends, params: {:user_id => user.id}
+      get :friends, params: { user_id: user.id }
     end
 
     it 'returns a success response' do

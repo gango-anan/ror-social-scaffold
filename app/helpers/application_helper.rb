@@ -28,19 +28,25 @@ module ApplicationHelper
   end
 
   def invite_btn(user)
-    return if current_user == user || current_user.unconfirmed_sent_requests.include?(user) || current_user.unconfirmed_received_requests.include?(user) || current_user.confirmed_friends.include?(user)
+    return if current_user == user
+    return if current_user.unconfirmed_sent_requests.include?(user)
+    return if current_user.unconfirmed_received_requests.include?(user)
+    return if current_user.confirmed_friends.include?(user)
+
     button_to('Invite to Friendship', invite_to_friendship_path(friend_id: user.id), method: :post)
   end
 
   def accept_btn(user)
     bond = current_user.find_bond(user, current_user)
     return unless current_user.unconfirmed_received_requests.include?(user)
+
     button_to('Accept', user_bond_path(user_id: user.id, id: bond.id), method: :put)
   end
 
   def reject_btn(user)
     bond = current_user.find_bond(user, current_user)
     return unless current_user.unconfirmed_received_requests.include?(user)
+
     button_to('Reject', user_bond_path(user_id: user.id, id: bond.id), method: :delete)
   end
 end

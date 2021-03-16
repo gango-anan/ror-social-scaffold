@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :confirmed_friendships,
            -> { where confirmed: true },
            class_name: 'Bond', dependent: :destroy
-  has_many :confirmed_friends, through: :confirmed_friendships, source: :user
+  has_many :confirmed_friends, through: :confirmed_friendships, source: :friend
 
   has_many :unconfirmed_sent_invitations, -> { where confirmed: false }, class_name: 'Bond', foreign_key: 'friend_id'
   has_many :pending_friends, through: :unconfirmed_sent_invitations, source: :user
@@ -34,5 +34,14 @@ class User < ApplicationRecord
 
   def unconfirmed_sent_requests
     self.unconfirmed_friends.to_a
+  end
+
+  def find_bond(user, new_user)
+    Bond.find_by(friend_id: new_user.id, user_id: user.id)
+  end
+
+  def create_reversed_row(user)
+    new_row = self.confirmed_friendships.build(friend: user)
+    new_row.save
   end
 end

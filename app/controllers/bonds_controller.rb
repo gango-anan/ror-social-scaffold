@@ -2,6 +2,8 @@ class BondsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @pending_sent_requests = current_user.unconfirmed_sent_requests
+    @pending_received_requests = current_user.unconfirmed_received_requests
   end
 
   def create
@@ -14,6 +16,9 @@ class BondsController < ApplicationController
   end
 
   def update
+    bond = Bond.find(params[:id])
+    bond.accept_friend
+    redirect_to user_bonds_path(current_user), notice: 'Request accepted successfully!'
   end
 
   def destroy

@@ -28,5 +28,7 @@ module ApplicationHelper
   end
 
   def invite_btn(user)
+    return if current_user == user || current_user.my_confirmed_friends.include?(user) || current_user.my_unconfirmed_friends.include?(user) 
+    button_to('Invite to Friendship', invite_to_friendship_path(friend_id: user.id), method: :post)
   end
 end

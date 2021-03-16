@@ -22,5 +22,8 @@ class BondsController < ApplicationController
   end
 
   def destroy
+    bond = Bond.find(params[:id])
+    bond.destroy
+    redirect_to user_bonds_path(current_user), alert: 'Request rejected.'
   end
 end

@@ -37,4 +37,10 @@ module ApplicationHelper
     return unless current_user.unconfirmed_received_requests.include?(user)
     button_to('Accept', user_bond_path(user_id: user.id, id: bond.id), method: :put)
   end
+
+  def reject_btn(user)
+    bond = current_user.find_bond(user, current_user)
+    return unless current_user.unconfirmed_received_requests.include?(user)
+    button_to('Reject', user_bond_path(user_id: user.id, id: bond.id), method: :delete)
+  end
 end

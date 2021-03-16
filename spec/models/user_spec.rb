@@ -46,8 +46,8 @@ RSpec.describe User, type: :model do
       Bond.create user: user, friend: friend3, confirmed: false
       Bond.create user: user, friend: friend4, confirmed: false
 
-      expect(user.unconfirmed_requests).to include(friend3, friend4)
-      expect(user.unconfirmed_requests).not_to include(friend1, friend2)
+      expect(user.unconfirmed_sent_requests).to include(friend3, friend4)
+      expect(user.unconfirmed_sent_requests).not_to include(friend1, friend2)
     end
   end
 end

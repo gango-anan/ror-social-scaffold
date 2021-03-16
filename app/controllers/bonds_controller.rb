@@ -26,4 +26,8 @@ class BondsController < ApplicationController
     bond.destroy
     redirect_to user_bonds_path(current_user), alert: 'Request rejected.'
   end
+
+  def friends
+    @my_friends = current_user.my_friends
+  end
 end

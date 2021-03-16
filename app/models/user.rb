@@ -44,4 +44,8 @@ class User < ApplicationRecord
     new_row = self.confirmed_friendships.build(friend: user)
     new_row.save
   end
+
+  def my_friends
+    self.confirmed_friends
+  end
 end

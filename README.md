@@ -11,7 +11,7 @@ Stay In Touch is a revamped social media application created using Ruby on rails
 - Ruby on Rails v5.2.4
 
 ## Live Demo
-
+[Stay in touch live link](https://gango-stay-in-touch.herokuapp.com)
 
 ## Getting Started
 
@@ -80,5 +80,5 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/gango-anan/ror-social-scaffold/blob/development/LICENSE) licensed.
+This project is [MIT](https://github.com/gango-anan/ror-social-scaffold/blob/master/LICENSE) licensed.
 

@@ -3,7 +3,7 @@ class CreateBonds < ActiveRecord::Migration[5.2]
     create_table :bonds do |t|
       t.integer :user_id, null: false
       t.integer :friend_id, null: false
-      t.boolean :state, null: false, default: false
+      t.boolean :confirmed, null: false, default: false
 
       t.timestamps
     end

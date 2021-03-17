@@ -1,15 +1,16 @@
-# Scaffold for social media app with Ruby on Rails
+# STAY IN TOUCH
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+Stay In Touch is a revamped social media application created using Ruby on rails on top of a project that was already existing. This application allows friends to keep in touch by creating accounts, inviting other registered users to a friendship and communicate to each other through posts. Below is a screenshot of the home page of a signed in user.
+
+## Home page of a logged in user.
+![screenshot](./app/assets/images/screen_shot.png)
 
 ## Built With
-
+- HTML, CSS
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
 ## Live Demo
-
-TBA
 
 
 ## Getting Started
@@ -18,9 +19,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+- Ruby: 2.7.0
+- Rails: 5.2.4
+- Postgres: >= 9.5
 
 ### Setup
 
@@ -37,15 +38,11 @@ Setup database with:
    rails db:migrate
 ```
 
-### Github Actions
+### Run tests
 
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
+```
+    rpsec --format documentation
+```
 
 ### Usage
 
@@ -57,27 +54,20 @@ Start server with:
 
 Open `http://localhost:3000/` in your browser.
 
-### Run tests
 
-```
-    rpsec --format documentation
-```
+## Author
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+GALIWANGO ANANIYA
 
-### Deployment
-
-TBA
-
-## Authors
-
-TBA
+- GitHub: [@gango-anan](https://github.com/gango-anan) 
+- Twitter: [@gango_anan](https://twitter.com/gango_anan) 
+- LinkedIn: [@galiwango-ananiya](https://www.linkedin.com/in/galiwango-ananiya-0800821b4/) 
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/gango-anan/ror-social-scaffold/issues).
 
 ## Show your support
 
@@ -85,9 +75,10 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Credit goes to TheOdinProject.
+
 
 ## 📝 License
 
-TBA
+This project is [MIT](https://github.com/gango-anan/ror-social-scaffold/blob/development/LICENSE) licensed.
 

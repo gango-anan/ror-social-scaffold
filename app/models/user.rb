@@ -11,55 +11,41 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   default_scope -> { order(:id) }
 
-  has_many :direct_friendships, class_name: 'Bond', foreign_key: 'user_id', dependent: :destroy
-  has_many :direct_friends, through: :direct_friendships, source: :friend
-  has_many :indirect_friendships, class_name: 'Bond', foreign_key: 'friend_id', dependent: :destroy
-  has_many :indirect_friends, through: :indirect_friendships, source: :user
+  has_many :unconfirmed_friendships,
+           -> { where confirmed: false },
+           class_name: 'Bond', dependent: :destroy
+  has_many :unconfirmed_friends, through: :unconfirmed_friendships, source: :friend
 
-  def my_friendships
-    direct_friendships + indirect_friendships
+  has_many :confirmed_friendships,
+           -> { where confirmed: true },
+           class_name: 'Bond', dependent: :destroy
+  has_many :confirmed_friends, through: :confirmed_friendships, source: :friend
+
+  has_many :unconfirmed_sent_invitations, -> { where confirmed: false }, class_name: 'Bond', foreign_key: 'friend_id'
+  has_many :pending_friends, through: :unconfirmed_sent_invitations, source: :user
+
+  def friends_and_own_posts
+    Post.where(user: (confirmed_friends.to_a << self))
   end
 
-  def invite_to_friendship(user)
-    direct_friends << user
-  end
-
-  def reject_friendship_request(user)
-    indirect_friends.delete(user)
-  end
-
-  def my_friends
-    direct_friends + indirect_friends
-  end
-
-  def pending_friends
-    pending_friends = indirect_friendships.map { |friendship| friendship.user unless friendship.state }
-    pending_friends.compact
-  end
-
-  def confirm_friendship(user)
-    bond = indirect_friendships.find { |friendship| friendship.user == user }
-    bond.state = true
-    bond.save
-  end
-
-  def check_if_my_friend(user)
-    my_friends.include?(user)
+  def unconfirmed_received_requests
+    pending_friends.to_a
   end
 
   def unconfirmed_sent_requests
-    unconfirmed_sent_requests = direct_friendships.map { |friendship| friendship.friend unless friendship.state }
-    unconfirmed_sent_requests.compact
+    unconfirmed_friends.to_a
   end
 
-  def confirmed_friends
-    direct_confirmed = direct_friendships.map { |friendship| friendship.friend if friendship.state }
-    indirect_confirmed = indirect_friendships.map { |friendship| friendship.user if friendship.state }
-
-    (direct_confirmed + indirect_confirmed).compact
+  def find_bond(user, new_user)
+    Bond.find_by(friend_id: new_user.id, user_id: user.id)
   end
 
-  def unconfirmed_requests
-    unconfirmed_sent_requests + pending_friends
+  def create_reversed_row(user)
+    new_row = confirmed_friendships.build(friend: user)
+    new_row.save
+  end
+
+  def my_friends
+    confirmed_friends
   end
 end

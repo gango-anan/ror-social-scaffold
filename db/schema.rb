@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_110747) do
   create_table "bonds", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "friend_id", null: false
-    t.boolean "state", default: false, null: false
+    t.boolean "confirmed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_bonds_on_friend_id"

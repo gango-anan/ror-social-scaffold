@@ -1,7 +1,7 @@
 <li>
-  <% @user = user %>
   Name: <%= user.name %>
   <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %> &nbsp; <%= invite_btn(user) %>
+    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <%= invite_btn(user) %>
   </span>
 </li>

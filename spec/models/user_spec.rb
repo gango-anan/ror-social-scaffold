@@ -26,9 +26,9 @@ RSpec.describe User, type: :model do
       friend2 = create(:user)
       friend3 = create(:user)
 
-      Bond.create user: user, friend: friend1, state: true
-      Bond.create user: user, friend: friend2, state: true
-      Bond.create user: user, friend: friend3, state: false
+      Bond.create user: user, friend: friend1, confirmed: true
+      Bond.create user: user, friend: friend2, confirmed: true
+      Bond.create user: user, friend: friend3, confirmed: false
 
       expect(user.confirmed_friends).to include(friend1, friend2)
       expect(user.confirmed_friends).not_to include(friend3)
@@ -41,13 +41,13 @@ RSpec.describe User, type: :model do
       friend3 = create(:user)
       friend4 = create(:user)
 
-      Bond.create user: user, friend: friend1, state: true
-      Bond.create user: user, friend: friend2, state: true
-      Bond.create user: user, friend: friend3, state: false
-      Bond.create user: user, friend: friend4, state: false
+      Bond.create user: user, friend: friend1, confirmed: true
+      Bond.create user: user, friend: friend2, confirmed: true
+      Bond.create user: user, friend: friend3, confirmed: false
+      Bond.create user: user, friend: friend4, confirmed: false
 
-      expect(user.unconfirmed_requests).to include(friend3, friend4)
-      expect(user.unconfirmed_requests).not_to include(friend1, friend2)
+      expect(user.unconfirmed_sent_requests).to include(friend3, friend4)
+      expect(user.unconfirmed_sent_requests).not_to include(friend1, friend2)
     end
   end
 end

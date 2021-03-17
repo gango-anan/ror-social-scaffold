@@ -1,7 +1,22 @@
-<% @user ||= current_user %>
-<h2><%= "#{ current_user.name.upcase }'S FRIENDS" %> </h2>
-   <br/>
-<% @confirmed_friends.pluck(:name).each do |friend| %>
-    <%= friend %>
-    <br/>
-<% end %>
+<h2><%= "#{ current_user.name.upcase }'S PENDING INVITATION REQUESTS" %> </h2>
+
+<section class="users-section">
+<h3>Pending Invitations Sent to me</h3>
+  <ul class="users-list">
+    <% @pending_received_requests.each do |person| %>
+        <li><%= person.name.capitalize %> &nbsp; <%= accept_btn(person) %> &nbsp; <%= reject_btn(person) %></li>
+    <% end %>
+  </ul>
+  <br/>
+  <br/>
+</section>
+<section class="users-section">
+<h3>Pending Invitations Sent by me</h3>
+  <ul class="users-list">
+    <% @pending_sent_requests.each do |person| %>
+        <li><%= person.name.capitalize %></li>
+    <% end %>
+  </ul>
+</section>
+
+

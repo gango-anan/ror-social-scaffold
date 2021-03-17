@@ -4,8 +4,9 @@ RSpec.describe BondsController, type: :controller do
   login_user
 
   describe '#index' do
+    let(:user) { create(:user) }
     before do
-      get :index
+      get :index, params: { user_id: user.id }
     end
 
     it 'returns a success response' do
@@ -18,26 +19,17 @@ RSpec.describe BondsController, type: :controller do
   end
 
   describe '#invitations' do
+    let(:user) { create(:user) }
     before do
-      get :invitations
+      get :friends, params: { user_id: user.id }
     end
 
     it 'returns a success response' do
       expect(response).to have_http_status(:success)
     end
 
-    it 'renders the invitations page properly' do
-      expect(response).to render_template :invitations
-    end
-  end
-
-  describe '#invitations' do
-    before do
-      get :invitations
-    end
-
-    it 'returns a success response after loading a new page for creating a bond' do
-      expect(response).to have_http_status(:success)
+    it 'renders the friends page properly' do
+      expect(response).to render_template :friends
     end
   end
 
@@ -53,13 +45,6 @@ RSpec.describe BondsController, type: :controller do
     it 'creates a bond' do
       params = { friend_id: user2.id }
       expect { post :create, params: params }.to change(Bond, :count).by(1)
-    end
-  end
-
-  describe '#destroy' do
-    it 'deletes a bond by rejecting a request.' do
-      bond = create(:bond)
-      expect { delete :destroy, params: { id: bond.id } }.to change(Bond, :count).by(-1)
     end
   end
 end

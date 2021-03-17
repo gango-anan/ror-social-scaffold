@@ -2,37 +2,32 @@ class BondsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @bonds = current_user.my_friendships
-    @friends = current_user.my_friends
-    @confirmed_friends = current_user.confirmed_friends
+    @pending_sent_requests = current_user.unconfirmed_sent_requests
+    @pending_received_requests = current_user.unconfirmed_received_requests
   end
-
-  def invitations
-    @pending_friends = current_user.pending_friends
-    @unconfirmed_sent_requests = current_user.unconfirmed_sent_requests
-  end
-
-  def new
-    @bond = Bond.new
-  end
-
-  def show; end
 
   def create
-    user = User.find(params[:friend_id])
-    current_user.invite_to_friendship(user)
-    redirect_to bonds_invitations_path
+    bond = current_user.unconfirmed_friendships.build(friend_id: params[:friend_id])
+    if bond.save
+      redirect_to user_bonds_path(current_user), notice: 'Friendship Invitation successfully sent.'
+    else
+      redirect_to users_path, alert: bond.errors.full_messages.join('. ').to_s
+    end
   end
 
   def update
-    user = Bond.find(params[:id]).user
-    current_user.confirm_friendship(user)
-    redirect_to bonds_path
+    bond = Bond.find(params[:id])
+    bond.accept_friend
+    redirect_to user_bonds_path(current_user), notice: 'Request accepted successfully!'
   end
 
   def destroy
     bond = Bond.find(params[:id])
     bond.destroy
-    redirect_to bonds_invitations_path
+    redirect_to users_path, alert: 'Request rejected.'
+  end
+
+  def friends
+    @my_friends = current_user.my_friends
   end
 end

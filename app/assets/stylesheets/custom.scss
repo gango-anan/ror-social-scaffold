@@ -57,7 +57,7 @@ a {
   }
 
   .menu {
-    width: 80%;
+    width: 50%;
     justify-content: space-between;
 
     .menu-item {
@@ -155,10 +155,6 @@ form {
       padding: 8px;
       background-color: $primary-color-light;
     }
-
-    input[type="checkbox"] {
-      width: fit-content;
-    }
   }
 
   .actions {
@@ -169,7 +165,7 @@ form {
 
   input[type="submit"] {
     padding: 8px;
-    width: 50%;
+    width: 100%;
     border: none;
     border-radius: 4px;
     background-color: $primary-color-dark;
@@ -234,12 +230,12 @@ form {
     a {
       color: $primary-color-dark;
       font-weight: bold;
-      font-size: 0.9em;
+      font-size: 1em;
       margin: 0 4px;
     }
 
     .post-date {
-      font-size: 0.6em;
+      font-size: 0.8em;
     }
   }
 

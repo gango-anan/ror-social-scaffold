@@ -1,0 +1,12 @@
+<div>
+  <%= link_to 'Pending Invitations', user_bonds_path(current_user) %>
+</div>
+<div>
+  <%= link_to 'My Friends', user_bonds_friends_path(current_user) %>
+</div>
+<div>
+  <%= link_to "#{ current_user.name }", user_path(current_user) %>
+</div>
+<div>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+</div>

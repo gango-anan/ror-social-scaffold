@@ -15,4 +15,38 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def logged_in_user
+    return render 'layouts/visitor' unless current_user
+
+    render 'layouts/loggedin_user'
+  end
+
+  def notices_alerts
+    render 'layouts/notices' if notice.present?
+    render 'layouts/alerts' if alert.present?
+  end
+
+  def invite_btn(user)
+    return if current_user == user
+    return if current_user.unconfirmed_sent_requests.include?(user)
+    return if current_user.unconfirmed_received_requests.include?(user)
+    return if current_user.confirmed_friends.include?(user)
+
+    button_to('Invite to Friendship', invite_to_friendship_path(friend_id: user.id), method: :post)
+  end
+
+  def accept_btn(user)
+    bond = current_user.find_bond(user, current_user)
+    return unless current_user.unconfirmed_received_requests.include?(user)
+
+    button_to('Accept', user_bond_path(user_id: user.id, id: bond.id), method: :put)
+  end
+
+  def reject_btn(user)
+    bond = current_user.find_bond(user, current_user)
+    return unless current_user.unconfirmed_received_requests.include?(user)
+
+    button_to('Reject', user_bond_path(user_id: user.id, id: bond.id), method: :delete)
+  end
 end

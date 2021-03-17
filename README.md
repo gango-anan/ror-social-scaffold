@@ -80,5 +80,5 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/gango-anan/ror-social-scaffold/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/gango-anan/stay-in-touch/blob/master/LICENSE) licensed.
 
